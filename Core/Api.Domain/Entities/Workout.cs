@@ -14,10 +14,10 @@ namespace Api.Domain.Entities
         Condition,
         Dance
     }
-    public class Workouts : EntityBase
+    public class Workout : EntityBase
     {
-        public Workouttype Workouttype { get; set; }
+        public Workouttype WorkoutType { get; set; }
         public string WorkoutDays { get; set; }
-        public double workouthours { get; set; }
+        public double WorkoutHours { get; set; }
     }
 }

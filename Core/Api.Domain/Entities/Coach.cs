@@ -23,5 +23,8 @@ namespace Api.Domain.Entities
         public bool Gender { get; set; }
         public Branch Branch { get; set; }
         public int Brevet { get; set; }
+        public ICollection<CoachGymnast> CoachGymnast { get; set; }
+
+
     }
 }

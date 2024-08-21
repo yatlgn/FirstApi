@@ -14,12 +14,14 @@ namespace Api.Domain.Entities
         Territorial,
         İnternational
     }
-    public class Competitions : EntityBase
+    public class Competition : EntityBase
     {
         public int CompetitionId { get; set; }
         public string CompetitionName { get; set; }
         public string CompetitionHall { get; set; }
         public CompetitionType CompetitionType { get; set; }
         public DateTime CompetitionDate { get; set; }
+
+        public ICollection<CompetitionGymnast>CompetitionGymnast { get; set;}
     }
 }

@@ -12,6 +12,6 @@ namespace Api.Domain.Entities
         public int SeriesId { get; set; }
         public double TotalPoint { get; set; }
         public DateTime SeriesReceivingDate { get; set; }
-        public double SeiesMinute { get; set; }
+        public double SeriesMinute { get; set; }
     }
 }

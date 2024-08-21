@@ -24,6 +24,10 @@ namespace Api.Domain.Entities
         public double Height { get; set; }
         public double Weight { get; set; }
         public double BMI { get; set; }
+     
         public Category Category { get; set; }
+        public ICollection<CompetitionGymnast> CompetitionGymnasts { get; set; }
+        public ICollection<CoachGymnast>CoachGymnasts { get; set; }
+        public ICollection<GymnastParent> GymnastParent { get; set; }
     }
 }

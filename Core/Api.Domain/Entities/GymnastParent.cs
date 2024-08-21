@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Api.Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Api.Domain.Entities
 {
-    public class CompetitionGymnast
+    public class GymnastParent : EntityBase
     {
         public int Id { get; set; }
         public int GymnastId { get; set; }
+        public int ParentId { get; set; }
 
-        public int CompetitionId { get; set; }
         public Gymnast Gymnast { get; set; }
-        public Competition  Competition { get; set; }
+        public Parent Parent { get; set; }
     }
 }
