@@ -1,5 +1,6 @@
 using Api.Persistence;
 using Api.Application;
+using Api.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ builder.Configuration
 
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplication();
+builder.Services.AddUserMapper();
+
 
 
 var app = builder.Build();
