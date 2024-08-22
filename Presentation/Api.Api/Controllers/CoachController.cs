@@ -19,7 +19,7 @@ namespace Api.Api.Controllers
         [HttpGet]
         public async Task <IActionResult> GetAllCoach()
         {
-            var response = await mediator.Send(new GetAllCoachQueryRequest());
+            var response = await mediator.Send(new GetAllCoachQueryRequest( ));
 
             return Ok(response);
         }
