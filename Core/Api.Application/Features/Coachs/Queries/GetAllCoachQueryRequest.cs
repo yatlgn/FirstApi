@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Api.Application.Features.Queries.GetAllCoach
+namespace Api.Application.Features.Coachs.Queries
 {
-    public class GetAllCoachQueryRequest : IRequest<IList<GetAllCoachQueryResponse>>
+    public class GetAllCoachQueryRequest :IRequest<IList<GetAllCoachQueryResponse>>
     {
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Api.Application.Features.Queries.GetAllCoach
+namespace Api.Application.Features.Coachs.Queries
 {
     public class GetAllCoachQueryResponse
     {
@@ -15,8 +15,5 @@ namespace Api.Application.Features.Queries.GetAllCoach
         public bool Gender { get; set; }
         public Branch Branch { get; set; }
         public int Brevet { get; set; }
-      
-
-
     }
 }
