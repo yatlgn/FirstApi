@@ -17,6 +17,20 @@ namespace Api.Domain.Entities
     }
     public class Coach : EntityBase
     {
+        public Coach()
+        {
+            
+        }
+        public Coach(int coachId, string name, string surname, bool gender, Branch branch, int brevet)
+        {
+            CoachId = coachId;
+            Name = name;
+            Surname = surname;
+            Gender = gender;
+            Branch = branch;
+            Brevet = brevet;
+        }
+
         public int CoachId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
