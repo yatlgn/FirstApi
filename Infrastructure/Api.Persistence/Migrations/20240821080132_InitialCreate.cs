@@ -48,13 +48,15 @@ namespace Api.Persistence.Migrations
                 name: "Difficulty",
                 columns: table => new
                 {
+                    DifficultyId = table.Column<int>(type: "int", nullable: false)
+                .Annotation("SqlServer:Identity", "1, 1"),
                     DifficultyName = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DifficultyType = table.Column<int>(type: "int", nullable: false),
                     DifficultyPoint = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Difficulty", x => x.DifficultyName);
+                    table.PrimaryKey("PK_Difficulty", x => x.DifficultyId);
                 });
 
             migrationBuilder.CreateTable(

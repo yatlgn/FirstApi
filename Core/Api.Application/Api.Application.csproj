@@ -24,34 +24,4 @@
     <ProjectReference Include="..\Api.Domain\Api.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\CoachGymnasts\Command\CreateCoachGymanst\" />
-    <Folder Include="Features\CoachGymnasts\Command\DeleteCoachGymnast\" />
-    <Folder Include="Features\CoachGymnasts\Command\UpdateCoachGymnast\" />
-    <Folder Include="Features\CompetitionGymnasts\Command\CreateCompetitionGymnast\" />
-    <Folder Include="Features\CompetitionGymnasts\Command\DeleteCompetitionGymnast\" />
-    <Folder Include="Features\CompetitionGymnasts\Command\UpdateCompetitionGymnast\" />
-    <Folder Include="Features\Competitions\Command\CreateCompetition\" />
-    <Folder Include="Features\Competitions\Command\DeleteCompetition\" />
-    <Folder Include="Features\Competitions\Command\UpdateCompetition\" />
-    <Folder Include="Features\Difficulties\Command\CreateDifficulty\" />
-    <Folder Include="Features\Difficulties\Command\DeleteDifficulty\" />
-    <Folder Include="Features\Difficulties\Command\UpdateDifficulty\" />
-    <Folder Include="Features\GymnastParents\Command\CreateGymnastParent\" />
-    <Folder Include="Features\GymnastParents\Command\DeleteGymnastParent\" />
-    <Folder Include="Features\GymnastParents\Command\UpdateGymnastParent\" />
-    <Folder Include="Features\Gymnasts\Command\CreateGymnast\" />
-    <Folder Include="Features\Gymnasts\Command\DeleteGymnast\" />
-    <Folder Include="Features\Gymnasts\Command\UpdateGymnast\" />
-    <Folder Include="Features\Parents\Command\CreateParent\" />
-    <Folder Include="Features\Parents\Command\DeleteParent\" />
-    <Folder Include="Features\Parents\Command\UpdateParent\" />
-    <Folder Include="Features\Seriess\Command\CreateSeries\" />
-    <Folder Include="Features\Seriess\Command\DeleteSeries\" />
-    <Folder Include="Features\Seriess\Command\UpdateSeries\" />
-    <Folder Include="Features\Workouts\Command\CreateWorkout\" />
-    <Folder Include="Features\Workouts\Command\DeleteWorkout\" />
-    <Folder Include="Features\Workouts\Command\UpdateWorkout\" />
-  </ItemGroup>
-
 </Project>

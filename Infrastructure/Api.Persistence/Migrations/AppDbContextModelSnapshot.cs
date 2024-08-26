@@ -36,7 +36,16 @@ namespace Api.Persistence.Migrations
                     b.Property<int>("Brevet")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("Gender")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -68,11 +77,17 @@ namespace Api.Persistence.Migrations
                     b.Property<int?>("CoachId1")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("GymnastId")
                         .HasColumnType("int");
 
                     b.Property<int?>("GymnastId1")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -111,6 +126,15 @@ namespace Api.Persistence.Migrations
                     b.Property<int>("CompetitionType")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("CompetitionId");
 
                     b.ToTable("Competition");
@@ -130,11 +154,17 @@ namespace Api.Persistence.Migrations
                     b.Property<int?>("CompetitionId1")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("GymnastId")
                         .HasColumnType("int");
 
                     b.Property<int?>("GymnastId1")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -151,8 +181,19 @@ namespace Api.Persistence.Migrations
 
             modelBuilder.Entity("Api.Domain.Entities.Difficulty", b =>
                 {
+                    b.Property<int>("DifficultyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DifficultyId"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("DifficultyName")
-                        .HasColumnType("nvarchar(450)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<double>("DifficultyPoint")
                         .HasColumnType("float");
@@ -160,7 +201,13 @@ namespace Api.Persistence.Migrations
                     b.Property<int>("DifficultyType")
                         .HasColumnType("int");
 
-                    b.HasKey("DifficultyName");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("DifficultyId");
 
                     b.ToTable("Difficulty");
                 });
@@ -182,8 +229,17 @@ namespace Api.Persistence.Migrations
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<double>("Height")
                         .HasColumnType("float");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -211,11 +267,17 @@ namespace Api.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("GymnastId")
                         .HasColumnType("int");
 
                     b.Property<int?>("GymnastId1")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
@@ -244,7 +306,16 @@ namespace Api.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ParentId"));
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("Gender")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Job")
@@ -278,6 +349,15 @@ namespace Api.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeriesId"));
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<double>("SeriesMinute")
                         .HasColumnType("float");
 
@@ -296,6 +376,15 @@ namespace Api.Persistence.Migrations
                 {
                     b.Property<int>("WorkoutType")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("WorkoutDays")
                         .IsRequired()

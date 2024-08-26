@@ -1,4 +1,6 @@
-﻿using Api.Application.Interfaces.AutoMapper;
+﻿using Api.Application.Features.CoachGymnasts.Command.UpdateCoachGymnast;
+using Api.Application.Features.GymnastParents.Command.UpdateGymnastParent;
+using Api.Application.Interfaces.AutoMapper;
 using AutoMapper;
 using AutoMapper.Internal;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -54,6 +56,16 @@ namespace Api.Mapper.AutoMapper
                 throw new InvalidOperationException("MapperContainer has not been initialized.");
             }
             return MapperContainer.Map<IList<TDestination>>(source);
+        }
+
+        public object Map<T1, T2>(UpdateCoachGymnastCommandRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object Map<T1, T2>(UpdateGymnastParentCommandRequest request)
+        {
+            throw new NotImplementedException();
         }
 
         protected void Config<TDestination, TSource>(int depth = 5, string? ignore = null)

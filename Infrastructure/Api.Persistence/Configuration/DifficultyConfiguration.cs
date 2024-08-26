@@ -13,7 +13,11 @@ namespace Api.Persistence.Configuration
     {
         public void Configure(EntityTypeBuilder<Difficulty> builder)
         {
-            builder.HasKey(d => d.DifficultyName);
+            builder.HasKey(c => c.DifficultyId);
+
+            builder.Property(c => c.DifficultyName)
+                .IsRequired()
+                .HasMaxLength(100);
 
             builder.Property(d => d.DifficultyType)
                 .IsRequired();
