@@ -40,7 +40,9 @@ namespace Api.Persistence.Repositories
             
         }
 
-
-
+        public Task HardDeleteRangeAsync(IList<T> entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

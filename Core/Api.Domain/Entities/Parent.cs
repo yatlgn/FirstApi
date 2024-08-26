@@ -10,6 +10,19 @@ namespace Api.Domain.Entities
 {
     public class Parent : EntityBase
     {
+        public Parent()
+        {
+        }
+        public Parent(int parentId, string name, string surname, bool gender, string job, int phoneNum)
+        {
+            ParentId = parentId;
+            Name = name;
+            Surname = surname;
+            Gender = gender;
+            Job = job;
+            PhoneNum = phoneNum;
+        }
+
         public int ParentId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

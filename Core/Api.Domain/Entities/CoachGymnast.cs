@@ -9,6 +9,18 @@ namespace Api.Domain.Entities
 {
     public class CoachGymnast : EntityBase
     {
+
+        public CoachGymnast()
+        {
+
+        }
+        public CoachGymnast(int ıd, int gymnastId, int coachId)
+        {
+            Id = ıd;
+            GymnastId = gymnastId;
+            CoachId = coachId;
+        }
+
         public int Id { get; set; }
         public int GymnastId { get; set; }
 

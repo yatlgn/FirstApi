@@ -15,8 +15,25 @@ namespace Api.Domain.Entities
         Senior,
         Elite
     }
+    
     public class Gymnast : EntityBase
     {
+        public Gymnast() 
+        {
+        }
+
+        public Gymnast(int gymnastId, string name, string surname, DateTime birthdate, double height, double weight, double bMI, Category category)
+        {
+            GymnastId = gymnastId;
+            Name = name;
+            Surname = surname;
+            Birthdate = birthdate;
+            Height = height;
+            Weight = weight;
+            BMI = bMI;
+            Category = category;
+        }
+
         public int GymnastId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
