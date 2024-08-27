@@ -1,13 +1,13 @@
-﻿using Api.Application.Bases;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Api.Application.Features.Coachs.Rules
+namespace Api.Domain.Entities
 {
-    public class CoachRules : BaseRules
+    public class User : IdentityUser<Guid>
     {
     }
 }
