@@ -1,5 +1,6 @@
 ﻿using Api.Domain.Entities;
 using Api.Persistence.Configuration;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using System;
@@ -11,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace Api.Persistence.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User, Role, Guid>
     {
-        //public AppDbContext() {}
+        public AppDbContext() {}
         public AppDbContext ( DbContextOptions<AppDbContext>options) : base(options)
         {
 

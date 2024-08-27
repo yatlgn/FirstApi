@@ -12,6 +12,7 @@ namespace Api.Application.Features.Parents.Command.CreateParent
     {
         public CreateParentCommandValidator()
         {
+
             RuleFor(x => x.ParentId)
                .GreaterThan(0).WithMessage("Parent ID must be greater than zero.");
 
@@ -31,8 +32,8 @@ namespace Api.Application.Features.Parents.Command.CreateParent
                 .MaximumLength(100).WithMessage("Job cannot be longer than 100 characters.");
 
             RuleFor(x => x.PhoneNum)
-                .NotEmpty().WithMessage("Phone number is required.")
-                .Matches(@"^\d{10}$").WithMessage("Phone number must be a 10-digit number.");
+                .Must(x => x >= 1000000000 && x <= 9999999999)
+                .WithMessage("Phone number must be a 10-digit number.");
 
         }
     }

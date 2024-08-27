@@ -7,12 +7,69 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\CoachGymnasts\Exceptions\**" />
+    <Compile Remove="Features\CoachGymnasts\Rules\**" />
+    <Compile Remove="Features\Coachs\Exceptions\**" />
     <Compile Remove="Features\Command\**" />
+    <Compile Remove="Features\CompetitionGymnasts\Exceptions\**" />
+    <Compile Remove="Features\CompetitionGymnasts\Rules\**" />
+    <Compile Remove="Features\Competitions\Exceptions\**" />
+    <Compile Remove="Features\Competitions\Rules\**" />
+    <Compile Remove="Features\Difficulties\Exceptions\**" />
+    <Compile Remove="Features\Difficulties\Rules\**" />
+    <Compile Remove="Features\GymnastParents\Exceptions\**" />
+    <Compile Remove="Features\GymnastParents\Rules\**" />
+    <Compile Remove="Features\Gymnasts\Exceptions\**" />
+    <Compile Remove="Features\Gymnasts\Rules\**" />
+    <Compile Remove="Features\Parents\Exceptions\**" />
+    <Compile Remove="Features\Parents\Rules\**" />
     <Compile Remove="Features\Queries\**" />
+    <Compile Remove="Features\Seriess\Exception\**" />
+    <Compile Remove="Features\Seriess\Rules\**" />
+    <Compile Remove="Features\Workouts\Exceptions\**" />
+    <Compile Remove="Features\Workouts\Rules\**" />
+    <EmbeddedResource Remove="Features\CoachGymnasts\Exceptions\**" />
+    <EmbeddedResource Remove="Features\CoachGymnasts\Rules\**" />
+    <EmbeddedResource Remove="Features\Coachs\Exceptions\**" />
     <EmbeddedResource Remove="Features\Command\**" />
+    <EmbeddedResource Remove="Features\CompetitionGymnasts\Exceptions\**" />
+    <EmbeddedResource Remove="Features\CompetitionGymnasts\Rules\**" />
+    <EmbeddedResource Remove="Features\Competitions\Exceptions\**" />
+    <EmbeddedResource Remove="Features\Competitions\Rules\**" />
+    <EmbeddedResource Remove="Features\Difficulties\Exceptions\**" />
+    <EmbeddedResource Remove="Features\Difficulties\Rules\**" />
+    <EmbeddedResource Remove="Features\GymnastParents\Exceptions\**" />
+    <EmbeddedResource Remove="Features\GymnastParents\Rules\**" />
+    <EmbeddedResource Remove="Features\Gymnasts\Exceptions\**" />
+    <EmbeddedResource Remove="Features\Gymnasts\Rules\**" />
+    <EmbeddedResource Remove="Features\Parents\Exceptions\**" />
+    <EmbeddedResource Remove="Features\Parents\Rules\**" />
     <EmbeddedResource Remove="Features\Queries\**" />
+    <EmbeddedResource Remove="Features\Seriess\Exception\**" />
+    <EmbeddedResource Remove="Features\Seriess\Rules\**" />
+    <EmbeddedResource Remove="Features\Workouts\Exceptions\**" />
+    <EmbeddedResource Remove="Features\Workouts\Rules\**" />
+    <None Remove="Features\CoachGymnasts\Exceptions\**" />
+    <None Remove="Features\CoachGymnasts\Rules\**" />
+    <None Remove="Features\Coachs\Exceptions\**" />
     <None Remove="Features\Command\**" />
+    <None Remove="Features\CompetitionGymnasts\Exceptions\**" />
+    <None Remove="Features\CompetitionGymnasts\Rules\**" />
+    <None Remove="Features\Competitions\Exceptions\**" />
+    <None Remove="Features\Competitions\Rules\**" />
+    <None Remove="Features\Difficulties\Exceptions\**" />
+    <None Remove="Features\Difficulties\Rules\**" />
+    <None Remove="Features\GymnastParents\Exceptions\**" />
+    <None Remove="Features\GymnastParents\Rules\**" />
+    <None Remove="Features\Gymnasts\Exceptions\**" />
+    <None Remove="Features\Gymnasts\Rules\**" />
+    <None Remove="Features\Parents\Exceptions\**" />
+    <None Remove="Features\Parents\Rules\**" />
     <None Remove="Features\Queries\**" />
+    <None Remove="Features\Seriess\Exception\**" />
+    <None Remove="Features\Seriess\Rules\**" />
+    <None Remove="Features\Workouts\Exceptions\**" />
+    <None Remove="Features\Workouts\Rules\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,28 +83,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Api.Domain\Api.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\CoachGymnasts\Exceptions\" />
-    <Folder Include="Features\CoachGymnasts\Rules\" />
-    <Folder Include="Features\Coachs\Exceptions\" />
-    <Folder Include="Features\CompetitionGymnasts\Exceptions\" />
-    <Folder Include="Features\CompetitionGymnasts\Rules\" />
-    <Folder Include="Features\Competitions\Exceptions\" />
-    <Folder Include="Features\Competitions\Rules\" />
-    <Folder Include="Features\Difficulties\Exceptions\" />
-    <Folder Include="Features\Difficulties\Rules\" />
-    <Folder Include="Features\GymnastParents\Exceptions\" />
-    <Folder Include="Features\GymnastParents\Rules\" />
-    <Folder Include="Features\Gymnasts\Exceptions\" />
-    <Folder Include="Features\Gymnasts\Rules\" />
-    <Folder Include="Features\Parents\Exceptions\" />
-    <Folder Include="Features\Parents\Rules\" />
-    <Folder Include="Features\Seriess\Exception\" />
-    <Folder Include="Features\Seriess\Rules\" />
-    <Folder Include="Features\Workouts\Exceptions\" />
-    <Folder Include="Features\Workouts\Rules\" />
   </ItemGroup>
 
 </Project>
