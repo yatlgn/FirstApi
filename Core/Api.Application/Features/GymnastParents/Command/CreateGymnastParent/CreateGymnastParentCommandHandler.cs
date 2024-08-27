@@ -12,19 +12,21 @@ namespace Api.Application.Features.GymnastParents.Command.CreateGymnastParent
 {
     
     
-        public class CreateGymnastParentCommandHandler : IRequestHandler<CreateGymnastParentCommandRequest>
+        public class CreateGymnastParentCommandHandler : IRequestHandler<CreateGymnastParentCommandRequest, Unit>
         {
             private readonly IUnitOfWork unitOfWork;
             public CreateGymnastParentCommandHandler(IUnitOfWork unitOfWork)
             {
                 this.unitOfWork = unitOfWork;
             }
-            public async Task Handle(CreateGymnastParentCommandRequest request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(CreateGymnastParentCommandRequest request, CancellationToken cancellationToken)
             {
                 GymnastParent gymnastparent = new(request.Id, request.GymnastId, request.ParentId);
 
                 await unitOfWork.GetWriteRepository<GymnastParent>().AddAsync(gymnastparent);
                 var result = await unitOfWork.SaveAsync();
+            
+                return Unit.Value;
             }
         }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Gymnasts.Command.DeleteGymnast
 {
-    public class DeleteGymnastCommandRequest : IRequest
+    public class DeleteGymnastCommandRequest : IRequest<Unit>
     {
         public int Id { get; set; }
     }

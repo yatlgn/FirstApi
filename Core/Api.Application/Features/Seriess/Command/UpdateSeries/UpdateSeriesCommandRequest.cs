@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Seriess.Command.UpdateSeries
 {
-    public class UpdateSeriesCommandRequest : IRequest
+    public class UpdateSeriesCommandRequest : IRequest<Unit>
     {
         public int SeriesId { get; set; }
         public double TotalPoint { get; set; }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Seriess.Command.UpdateSeries
 {
-    public class UpdateSeriesCommandHandler : IRequestHandler<UpdateSeriesCommandRequest>
+    public class UpdateSeriesCommandHandler : IRequestHandler<UpdateSeriesCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -21,10 +21,12 @@ namespace Api.Application.Features.Seriess.Command.UpdateSeries
             this.mapper = mapper;
 
         }
-        public async Task Handle(UpdateSeriesCommandRequest request, CancellationToken cancellationToken)
+        public async Task <Unit>Handle(UpdateSeriesCommandRequest request, CancellationToken cancellationToken)
         {
             var series = await unitOfWork.GetReadRepository<Series>().GetAsync(x => x.Id == request.SeriesId && !x.IsDeleted);
             var map = mapper.Map<Series, UpdateSeriesCommandRequest>(request);
+
+            return Unit.Value;
         }
     }
 }

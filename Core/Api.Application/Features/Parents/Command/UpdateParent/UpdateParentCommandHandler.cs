@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Parents.Command.UpdateParent
 {
-    public class UpdateParentCommandHandler : IRequestHandler<UpdateParentCommandRequest>
+    public class UpdateParentCommandHandler : IRequestHandler<UpdateParentCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -21,10 +21,11 @@ namespace Api.Application.Features.Parents.Command.UpdateParent
             this.mapper = mapper;
 
         }
-        public async Task Handle(UpdateParentCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateParentCommandRequest request, CancellationToken cancellationToken)
         {
             var parent = await unitOfWork.GetReadRepository<Parent>().GetAsync(x => x.Id == request.ParentId && !x.IsDeleted);
             var map = mapper.Map<Parent, UpdateParentCommandRequest>(request);
+            return Unit.Value;
         }
     }
 }

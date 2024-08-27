@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Coachs.Command.DeleteCoach
 {
-    public class DeleteCoachCommandRequest : IRequest
+    public class DeleteCoachCommandRequest : IRequest<Unit>
     {
         public int Id { get; set; }
     }

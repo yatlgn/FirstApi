@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Workouts.Command.DeleteWorkout
 {
-    public class DeleteWorkoutCommandRequest : IRequest
+    public class DeleteWorkoutCommandRequest : IRequest<Unit>
     {
         public int  Id { get; set; }
     }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.GymnastParents.Command.DeleteGymnastParent
 {
-    public class DeleteGymnastParentCommandHandler : IRequestHandler<DeleteGymnastParentCommandRequest>
+    public class DeleteGymnastParentCommandHandler : IRequestHandler<DeleteGymnastParentCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public DeleteGymnastParentCommandHandler(IUnitOfWork unitOfWork)
@@ -18,13 +18,15 @@ namespace Api.Application.Features.GymnastParents.Command.DeleteGymnastParent
             this.unitOfWork = unitOfWork;
 
         }
-        public async Task Handle(DeleteGymnastParentCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteGymnastParentCommandRequest request, CancellationToken cancellationToken)
         {
             var gymnastparent = await unitOfWork.GetReadRepository<GymnastParent>().GetAsync(x => x.Id == request.Id && !x.IsDeleted);
             gymnastparent.IsDeleted = false;
 
             await unitOfWork.GetWriteRepository<GymnastParent>().UpdateAsync(gymnastparent);
             await unitOfWork.SaveAsync();
+
+            return Unit.Value;
         }
     }
 }

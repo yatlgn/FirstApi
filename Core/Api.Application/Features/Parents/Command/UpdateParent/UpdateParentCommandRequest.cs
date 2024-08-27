@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Parents.Command.UpdateParent
 {
-    public class UpdateParentCommandRequest : IRequest
+    public class UpdateParentCommandRequest : IRequest<Unit>
     {
 
         public int ParentId { get; set; }

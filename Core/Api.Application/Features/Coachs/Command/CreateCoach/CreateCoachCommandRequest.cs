@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Api.Application.Features.Coachs.Command.CreateCoach
 {
-    public class CreateCoachCommandRequest : IRequest
+    public class CreateCoachCommandRequest : IRequest<Unit>
     {
 
         public int CoachId { get; set; }

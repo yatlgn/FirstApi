@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Workouts.Command.DeleteWorkout
 {
-    public class DeleteWorkoutCommandHandler : IRequestHandler<DeleteWorkoutCommandRequest>
+    public class DeleteWorkoutCommandHandler : IRequestHandler<DeleteWorkoutCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public DeleteWorkoutCommandHandler(IUnitOfWork unitOfWork)
@@ -18,13 +18,14 @@ namespace Api.Application.Features.Workouts.Command.DeleteWorkout
             this.unitOfWork = unitOfWork;
 
         }
-        public async Task Handle(DeleteWorkoutCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteWorkoutCommandRequest request, CancellationToken cancellationToken)
         {
             var workout = await unitOfWork.GetReadRepository<Workout>().GetAsync(x => x.Id == request.Id && !x.IsDeleted);
             workout.IsDeleted = false;
 
             await unitOfWork.GetWriteRepository<Workout>().UpdateAsync(workout);
             await unitOfWork.SaveAsync();
+            return Unit.Value;
         }
     }
 }

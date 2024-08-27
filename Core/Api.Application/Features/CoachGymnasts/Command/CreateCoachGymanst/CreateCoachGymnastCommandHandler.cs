@@ -10,19 +10,20 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.CoachGymnasts.Command.CreateCoachGymanst
 {
-    public class CreateCoachGymnastCommandHandler : IRequestHandler<CreateCoachGymnastCommandRequest>
+    public class CreateCoachGymnastCommandHandler : IRequestHandler<CreateCoachGymnastCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public CreateCoachGymnastCommandHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task Handle(CreateCoachGymnastCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateCoachGymnastCommandRequest request, CancellationToken cancellationToken)
         {
             CoachGymnast coachgymnast = new(request.Id, request.GymnastId, request.GymnastId);
 
             await unitOfWork.GetWriteRepository<CoachGymnast>().AddAsync(coachgymnast);
             var result = await unitOfWork.SaveAsync();
+            return Unit.Value;
         }
     }
 }

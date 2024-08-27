@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Difficulties.Command.CreateDifficulty
 {
-    public class CreateDifficultyCommandRequest : IRequest
+    public class CreateDifficultyCommandRequest : IRequest<Unit>
     {
         public string DifficultyName { get; set; }
         public DifficultyType DifficultyType { get; set; }

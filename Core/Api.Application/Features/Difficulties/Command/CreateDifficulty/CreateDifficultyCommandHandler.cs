@@ -10,19 +10,20 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Difficulties.Command.CreateDifficulty
 {
-    public class CreateDifficultyCommandHandler : IRequestHandler<CreateDifficultyCommandRequest>
+    public class CreateDifficultyCommandHandler : IRequestHandler<CreateDifficultyCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public CreateDifficultyCommandHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task Handle(CreateDifficultyCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateDifficultyCommandRequest request, CancellationToken cancellationToken)
         {
             Difficulty difficulty = new(request.DifficultyId, request.DifficultyName, request.DifficultyType, request.DifficultyPoint);
 
             await unitOfWork.GetWriteRepository<Difficulty>().AddAsync(difficulty);
             var result = await unitOfWork.SaveAsync();
+            return Unit.Value;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Seriess.Command.CreateSeries
 {
-    public class CreateSeriesCommandRequest : IRequest
+    public class CreateSeriesCommandRequest : IRequest<Unit>
     {
 
         public int SeriesId { get; set; }

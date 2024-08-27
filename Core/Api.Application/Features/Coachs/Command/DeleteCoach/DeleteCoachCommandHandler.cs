@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Coachs.Command.DeleteCoach
 {
-    public class DeleteCoachCommandHandler : IRequestHandler<DeleteCoachCommandRequest>
+    public class DeleteCoachCommandHandler : IRequestHandler<DeleteCoachCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public DeleteCoachCommandHandler(IUnitOfWork unitOfWork)
@@ -17,13 +17,15 @@ namespace Api.Application.Features.Coachs.Command.DeleteCoach
             this.unitOfWork = unitOfWork;
             
         }
-        public  async Task Handle(DeleteCoachCommandRequest request, CancellationToken cancellationToken)
+        public  async Task<Unit> Handle(DeleteCoachCommandRequest request, CancellationToken cancellationToken)
         {
             var coach = await unitOfWork.GetReadRepository<Coach>().GetAsync(x => x.Id == request.Id && !x.IsDeleted);
             coach.IsDeleted = false;
 
             await unitOfWork.GetWriteRepository<Coach>().UpdateAsync(coach);
             await unitOfWork.SaveAsync();
+
+            return Unit.Value;
         }
     }
 }

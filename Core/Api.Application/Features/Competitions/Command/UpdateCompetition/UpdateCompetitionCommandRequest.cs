@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Competitions.Command.UpdateCompetition
 {
-    public class UpdateCompetitionCommandRequest : IRequest
+    public class UpdateCompetitionCommandRequest : IRequest<Unit>
     {
         public int CompetitionId { get; set; }
         public string CompetitionName { get; set; }

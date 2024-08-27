@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Parents.Command.CreateParent
 {
-    public class CreateParentCommandRequest : IRequest
+    public class CreateParentCommandRequest : IRequest<Unit>
     {
         public int ParentId { get; set; }
         public string Name { get; set; }
