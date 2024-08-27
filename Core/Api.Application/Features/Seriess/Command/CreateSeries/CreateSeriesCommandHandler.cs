@@ -10,19 +10,21 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Seriess.Command.CreateSeries
 {
-    public class CreateSeriesCommandHandler : IRequestHandler<CreateSeriesCommandRequest>
+    public class CreateSeriesCommandHandler : IRequestHandler<CreateSeriesCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public CreateSeriesCommandHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task Handle(CreateSeriesCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateSeriesCommandRequest request, CancellationToken cancellationToken)
         {
             Series series = new(request.SeriesId, request.SeriesMinute, request.TotalPoint, request.SeriesReceivingDate);
 
             await unitOfWork.GetWriteRepository<Series>().AddAsync(series);
             var result = await unitOfWork.SaveAsync();
+
+            return Unit.Value;
         }
     }
 }

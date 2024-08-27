@@ -11,16 +11,18 @@ using System.Threading.Tasks;
 namespace Api.Application.Features.Gymnasts.Command.CreateGymnast
 {
    
-        public class GymnastCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<CreateGymnastCommandRequest>
+        public class GymnastCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<CreateGymnastCommandRequest,Unit>
         {
             private readonly IUnitOfWork unitOfWork = unitOfWork;
 
-        public async Task Handle(CreateGymnastCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateGymnastCommandRequest request, CancellationToken cancellationToken)
             {
                 Gymnast gymnast = new(request.GymnastId, request.Name, request.Surname, request.Birthdate, request.Height, request.Weight, request.BMI, request.Category);
 
                 await unitOfWork.GetWriteRepository<Gymnast>().AddAsync(gymnast);
                 var result = await unitOfWork.SaveAsync();
+
+            return Unit.Value;
             }
         }
 }

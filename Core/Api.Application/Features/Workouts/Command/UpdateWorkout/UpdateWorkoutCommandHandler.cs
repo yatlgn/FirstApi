@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Workouts.Command.UpdateWorkout
 {
-    public class UpdateWorkoutCommandHandler : IRequestHandler<UpdateWorkoutCommandRequest>
+    public class UpdateWorkoutCommandHandler : IRequestHandler<UpdateWorkoutCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -21,10 +21,12 @@ namespace Api.Application.Features.Workouts.Command.UpdateWorkout
             this.mapper = mapper;
 
         }
-        public async Task Handle(UpdateWorkoutCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateWorkoutCommandRequest request, CancellationToken cancellationToken)
         {
             var workout = await unitOfWork.GetReadRepository<Workout>().GetAsync(x => x.WorkoutType == request.WorkoutType && !x.IsDeleted);
             var map = mapper.Map<Workout, UpdateWorkoutCommandRequest>(request);
+            
+            return Unit.Value;
         }
     }
 }

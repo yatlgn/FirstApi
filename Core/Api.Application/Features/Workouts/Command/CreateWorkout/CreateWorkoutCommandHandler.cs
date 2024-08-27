@@ -10,19 +10,21 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Workouts.Command.CreateWorkout
 {
-    public class CreateWorkoutCommandHandler : IRequestHandler<CreateWorkoutCommandRequest>
+    public class CreateWorkoutCommandHandler : IRequestHandler<CreateWorkoutCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public CreateWorkoutCommandHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task Handle(CreateWorkoutCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateWorkoutCommandRequest request, CancellationToken cancellationToken)
         {
             Workout workout = new(request.WorkoutHours, request.WorkoutDays, request.WorkoutType);
 
             await unitOfWork.GetWriteRepository<Workout>().AddAsync(workout);
             var result = await unitOfWork.SaveAsync();
+
+            return Unit.Value;
         }
     }
 }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Difficulties.Command.UpdateDifficulty
 {
-    public class UpdateDifficultyCommandHandler : IRequestHandler<UpdateDifficultyCommandRequest>
+    public class UpdateDifficultyCommandHandler : IRequestHandler<UpdateDifficultyCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -21,10 +21,12 @@ namespace Api.Application.Features.Difficulties.Command.UpdateDifficulty
             this.mapper = mapper;
 
         }
-        public async Task Handle(UpdateDifficultyCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateDifficultyCommandRequest request, CancellationToken cancellationToken)
         {
             var difficulty = await unitOfWork.GetReadRepository<Difficulty>().GetAsync(x => x.Id == request.DifficultyId && !x.IsDeleted);
             var map = mapper.Map<Difficulty, UpdateDifficultyCommandRequest>(request);
+
+            return Unit.Value;
         }
     }
 }

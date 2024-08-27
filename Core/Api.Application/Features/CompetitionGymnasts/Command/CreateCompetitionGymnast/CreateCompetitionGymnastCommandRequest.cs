@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.CompetitionGymnasts.Command.CreateCompetitionGymnast
 {
-    public class CreateCompetitionGymnastCommandRequest : IRequest
+    public class CreateCompetitionGymnastCommandRequest : IRequest<Unit>
     {
 
         public int Id { get; set; }

@@ -11,15 +11,17 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Competitions.Command.DeleteCompetition
 {
-    public class DeleteCompetitiontonCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<DeleteCompetitionCommandRequest>
+    public class DeleteCompetitiontonCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<DeleteCompetitionCommandRequest, Unit>
     {
-        public async Task Handle(DeleteCompetitionCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteCompetitionCommandRequest request, CancellationToken cancellationToken)
         {
             var competition = await unitOfWork.GetReadRepository<Competition>().GetAsync(x => x.Id == request.Id && !x.IsDeleted);
             competition.IsDeleted = false;
 
             await unitOfWork.GetWriteRepository<Competition>().UpdateAsync(competition);
             await unitOfWork.SaveAsync();
+
+            return Unit.Value;
         }
     }
 }

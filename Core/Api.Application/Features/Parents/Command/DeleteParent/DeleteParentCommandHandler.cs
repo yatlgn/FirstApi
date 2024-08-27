@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Parents.Command.DeleteParent
 {
-    public class DeleteParentCommandHandler : IRequestHandler<DeleteParentCommandRequest>
+    public class DeleteParentCommandHandler : IRequestHandler<DeleteParentCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public DeleteParentCommandHandler(IUnitOfWork unitOfWork)
@@ -18,13 +18,14 @@ namespace Api.Application.Features.Parents.Command.DeleteParent
             this.unitOfWork = unitOfWork;
 
         }
-        public async Task Handle(DeleteParentCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteParentCommandRequest request, CancellationToken cancellationToken)
         {
             var parent = await unitOfWork.GetReadRepository<Parent>().GetAsync(x => x.Id == request.Id && !x.IsDeleted);
             parent.IsDeleted = false;
 
             await unitOfWork.GetWriteRepository<Parent>().UpdateAsync(parent);
             await unitOfWork.SaveAsync();
+            return Unit.Value;
         }
     }
 }

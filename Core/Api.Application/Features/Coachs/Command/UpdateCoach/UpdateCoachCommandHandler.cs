@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Coachs.Command.UpdateCoach
 {
-    public class UpdateCoachCommandHandler : IRequestHandler<UpdateCoachCommandRequest>
+    public class UpdateCoachCommandHandler : IRequestHandler<UpdateCoachCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -21,10 +21,12 @@ namespace Api.Application.Features.Coachs.Command.UpdateCoach
             this.mapper = mapper;
             
         }
-        public async Task Handle(UpdateCoachCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateCoachCommandRequest request, CancellationToken cancellationToken)
         {
             var coach = await unitOfWork.GetReadRepository<Coach>().GetAsync(x => x.Id == request.CoachId && !x.IsDeleted);
             var map = mapper.Map<Coach, UpdateCoachCommandRequest>(request);
+
+            return Unit.Value;
         }
     }
 }

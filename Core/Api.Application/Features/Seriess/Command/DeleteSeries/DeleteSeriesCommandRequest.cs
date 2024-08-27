@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Seriess.Command.DeleteSeries
 {
-    public class DeleteSeriesCommandRequest : IRequest
+    public class DeleteSeriesCommandRequest : IRequest<Unit>
     {
         public int Id { get; set; }
     }

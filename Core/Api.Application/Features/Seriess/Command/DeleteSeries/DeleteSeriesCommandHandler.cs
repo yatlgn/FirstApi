@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Seriess.Command.DeleteSeries
 {
-    public class DeleteSeriesCommandHandler : IRequestHandler<DeleteSeriesCommandRequest>
+    public class DeleteSeriesCommandHandler : IRequestHandler<DeleteSeriesCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public DeleteSeriesCommandHandler(IUnitOfWork unitOfWork)
@@ -18,13 +18,15 @@ namespace Api.Application.Features.Seriess.Command.DeleteSeries
             this.unitOfWork = unitOfWork;
 
         }
-        public async Task Handle(DeleteSeriesCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteSeriesCommandRequest request, CancellationToken cancellationToken)
         {
             var series = await unitOfWork.GetReadRepository<Series>().GetAsync(x => x.Id == request.Id && !x.IsDeleted);
             series.IsDeleted = false;
 
             await unitOfWork.GetWriteRepository<Series>().UpdateAsync(series);
             await unitOfWork.SaveAsync();
+
+            return Unit.Value;
         }
     }
 }

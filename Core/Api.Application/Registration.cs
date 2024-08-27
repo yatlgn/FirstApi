@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
+using MediatR;
+using Api.Application.Beheviors;
 
 namespace Api.Application
 {
@@ -17,6 +18,11 @@ namespace Api.Application
             servises.AddTransient<ExceptionMiddleware>();
 
             servises.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+
+            servises.AddValidatorsFromAssembly(assembly);
+
+            servises.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+          
 
         }
     }

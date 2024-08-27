@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Coachs.Command.UpdateCoach
 {
-    public class UpdateCoachCommandRequest : IRequest
+    public class UpdateCoachCommandRequest : IRequest<Unit>
     {
         public int CoachId { get; set; }
         public string Name { get; set; }

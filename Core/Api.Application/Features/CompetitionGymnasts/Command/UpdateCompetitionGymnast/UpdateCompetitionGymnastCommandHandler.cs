@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.CompetitionGymnasts.Command.UpdateCompetitionGymnast
 {
-    public class UpdateCompetitionGymnastCommandHandler : IRequestHandler<UpdateCompetitionGymnastCommandRequest>
+    public class UpdateCompetitionGymnastCommandHandler : IRequestHandler<UpdateCompetitionGymnastCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -21,11 +21,13 @@ namespace Api.Application.Features.CompetitionGymnasts.Command.UpdateCompetition
             this.mapper = mapper;
 
         }
-        public async Task Handle(UpdateCompetitionGymnastCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateCompetitionGymnastCommandRequest request, CancellationToken cancellationToken)
         {
             var competition = await unitOfWork.GetReadRepository<CompetitionGymnast>().GetAsync(x => x.Id == request.CompetitionId && !x.IsDeleted);
             var gymnast = await unitOfWork.GetReadRepository<CompetitionGymnast>().GetAsync(x => x.Id == request.GymnastId && !x.IsDeleted);
             var map = mapper.Map<CompetitionGymnast, UpdateCompetitionGymnastCommandRequest>(request);
+
+            return Unit.Value;
         }
     }
 }

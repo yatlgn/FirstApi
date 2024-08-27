@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Parents.Command.DeleteParent
 {
-    public class DeleteParentCommandRequest : IRequest
+    public class DeleteParentCommandRequest : IRequest<Unit>
     {
         public int Id { get; set; }
     }

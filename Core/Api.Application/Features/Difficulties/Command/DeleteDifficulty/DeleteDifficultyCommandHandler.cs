@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Difficulties.Command.DeleteDifficulty
 {
-    public class DeleteDifficultyCommandHandler : IRequestHandler<DeleteDifficultyCommandRequest>
+    public class DeleteDifficultyCommandHandler : IRequestHandler<DeleteDifficultyCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public DeleteDifficultyCommandHandler(IUnitOfWork unitOfWork)
@@ -18,13 +18,15 @@ namespace Api.Application.Features.Difficulties.Command.DeleteDifficulty
             this.unitOfWork = unitOfWork;
 
         }
-        public async Task Handle(DeleteDifficultyCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteDifficultyCommandRequest request, CancellationToken cancellationToken)
         {
             var difficulty = await unitOfWork.GetReadRepository<Difficulty>().GetAsync(x => x.Id == request.Id && !x.IsDeleted);
             difficulty.IsDeleted = false;
 
             await unitOfWork.GetWriteRepository<Difficulty>().UpdateAsync(difficulty);
             await unitOfWork.SaveAsync();
+
+            return Unit.Value;
         }
     }
 }

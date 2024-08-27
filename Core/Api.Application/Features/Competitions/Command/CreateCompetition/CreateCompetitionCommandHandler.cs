@@ -10,19 +10,20 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Competitions.Command.CreateCompetition
 {
-    public class CreateCompetitionCommandHandler : IRequestHandler<CreateCompetitionCommandRequest>
+    public class CreateCompetitionCommandHandler : IRequestHandler<CreateCompetitionCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         public CreateCompetitionCommandHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task Handle(CreateCompetitionCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateCompetitionCommandRequest request, CancellationToken cancellationToken)
         {
             Competition competition = new(request.CompetitionId, request.CompetitionName, request.CompetitionHall, request.CompetitionType, request.CompetitionDate);
 
              await unitOfWork.GetWriteRepository<Competition>().AddAsync(competition);
             var result = await unitOfWork.SaveAsync();
+            return Unit.Value;
         }
     }
 }

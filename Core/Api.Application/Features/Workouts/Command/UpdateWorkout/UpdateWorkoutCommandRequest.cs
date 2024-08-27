@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Workouts.Command.UpdateWorkout
 {
-    public class UpdateWorkoutCommandRequest : IRequest
+    public class UpdateWorkoutCommandRequest : IRequest<Unit>
     {
         public Workouttype WorkoutType { get; set; }
         public string WorkoutDays { get; set; }

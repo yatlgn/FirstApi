@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.GymnastParents.Command.CreateGymnastParent
 {
-    public class CreateGymnastParentCommandRequest : IRequest
+    public class CreateGymnastParentCommandRequest : IRequest<Unit>
     {
         public int Id { get; set; }
         public int GymnastId { get; set; }

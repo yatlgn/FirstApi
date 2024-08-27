@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Difficulties.Command.DeleteDifficulty
 {
-    public class DeleteDifficultyCommandRequest : IRequest
+    public class DeleteDifficultyCommandRequest : IRequest<Unit>
     {
         public int Id { get; set; }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Competitions.Command.DeleteCompetition
 {
-    public class DeleteCompetitionCommandRequest :IRequest
+    public class DeleteCompetitionCommandRequest :IRequest<Unit>
     {
         public int Id { get; set; }
     }

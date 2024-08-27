@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.9.2" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
     <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
@@ -24,6 +26,28 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Api.Domain\Api.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\CoachGymnasts\Exceptions\" />
+    <Folder Include="Features\CoachGymnasts\Rules\" />
+    <Folder Include="Features\Coachs\Exceptions\" />
+    <Folder Include="Features\CompetitionGymnasts\Exceptions\" />
+    <Folder Include="Features\CompetitionGymnasts\Rules\" />
+    <Folder Include="Features\Competitions\Exceptions\" />
+    <Folder Include="Features\Competitions\Rules\" />
+    <Folder Include="Features\Difficulties\Exceptions\" />
+    <Folder Include="Features\Difficulties\Rules\" />
+    <Folder Include="Features\GymnastParents\Exceptions\" />
+    <Folder Include="Features\GymnastParents\Rules\" />
+    <Folder Include="Features\Gymnasts\Exceptions\" />
+    <Folder Include="Features\Gymnasts\Rules\" />
+    <Folder Include="Features\Parents\Exceptions\" />
+    <Folder Include="Features\Parents\Rules\" />
+    <Folder Include="Features\Seriess\Exception\" />
+    <Folder Include="Features\Seriess\Rules\" />
+    <Folder Include="Features\Workouts\Exceptions\" />
+    <Folder Include="Features\Workouts\Rules\" />
   </ItemGroup>
 
 </Project>
