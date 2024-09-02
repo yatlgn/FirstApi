@@ -1,6 +1,9 @@
-﻿using Api.Application.Interfaces;
+﻿using Api.Application.Bases;
+using Api.Application.Interfaces;
+using Api.Application.Interfaces.AutoMapper;
 using Api.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Coachs.Command.DeleteCoach
 {
-    public class DeleteCoachCommandHandler : IRequestHandler<DeleteCoachCommandRequest, Unit>
+    public class DeleteCoachCommandHandler :BaseHandler, IRequestHandler<DeleteCoachCommandRequest, Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        public DeleteCoachCommandHandler(IUnitOfWork unitOfWork)
+        
+        public DeleteCoachCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
+
             
         }
         public  async Task<Unit> Handle(DeleteCoachCommandRequest request, CancellationToken cancellationToken)

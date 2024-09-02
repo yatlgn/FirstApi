@@ -1,6 +1,0 @@
-{
-  "ConnectionString": {
-    "DefaultConnection": "Server= .;Database= Api;Trusted_Connection=True; TrustServerCertificate =true;"
-  },
-
-}

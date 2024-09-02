@@ -26,31 +26,37 @@ namespace Api.Infrastructure.Tokens
         }
         public async Task<JwtSecurityToken> CreateToken(User user, IList<string> roles)
         {
-            var claims = new List<Claim>()
-            {
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email)
+            if (user == null) throw new ArgumentNullException(nameof(user));
+            if (roles == null || !roles.Any()) throw new ArgumentNullException(nameof(roles));
+            if (string.IsNullOrEmpty(tokenSettings.Secret)) throw new ArgumentNullException(nameof(tokenSettings.Secret));
+            if (tokenSettings.TokenValidityInMinutes <= 0) throw new ArgumentOutOfRangeException(nameof(tokenSettings.TokenValidityInMinutes));
 
-            };
-            foreach( var role in roles)
+            var claims = new List<Claim>
+    {
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim(JwtRegisteredClaimNames.Email, user.Email)
+    };
+
+            foreach (var role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.Secret));
             var token = new JwtSecurityToken(
                 issuer: tokenSettings.Issuer,
                 audience: tokenSettings.Audience,
-                expires: DateTime.Now.AddMinutes(tokenSettings.TokenVakidityInmunitues),
+                expires: DateTime.Now.AddMinutes(tokenSettings.TokenValidityInMinutes),  
                 claims: claims,
                 signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
-                );
+            );
 
             await userManager.AddClaimsAsync(user, claims);
 
             return token;
-
         }
+
 
         public string GenerateRefreshToken()
         {
@@ -62,23 +68,27 @@ namespace Api.Infrastructure.Tokens
 
         public ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
         {
+            if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(nameof(token));
+
             TokenValidationParameters tokenValidationParameters = new()
             {
                 ValidateIssuer = false,
                 ValidateAudience = false,
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings.Secret)),
-                ValidateLifetime = false
+                ValidateLifetime = false 
             };
+
             JwtSecurityTokenHandler tokenHandler = new();
             var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+
             if (securityToken is not JwtSecurityToken jwtSecurityToken
-                || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
-                StringComparison.InvariantCultureIgnoreCase))
-                throw new SecurityTokenException("Token not found.");
+                || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new SecurityTokenException("Invalid token.");
+            }
 
             return principal;
-            
         }
     }
 }

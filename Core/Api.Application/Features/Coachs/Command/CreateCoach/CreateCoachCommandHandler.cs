@@ -1,7 +1,10 @@
-﻿using Api.Application.Interfaces;
+﻿using Api.Application.Bases;
+using Api.Application.Interfaces;
+using Api.Application.Interfaces.AutoMapper;
 using Api.Domain.Entities;
 using MediatR;
 using MediatR.Pipeline;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +14,12 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Coachs.Command.CreateCoach
 {
-    public class CreateCoachCommandHandler : IRequestHandler<CreateCoachCommandRequest, Unit>
+    public class CreateCoachCommandHandler : BaseHandler, IRequestHandler<CreateCoachCommandRequest, Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        public CreateCoachCommandHandler(IUnitOfWork unitOfWork)
+        
+        public CreateCoachCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork; 
+        
         }
         public async Task<Unit> Handle(CreateCoachCommandRequest request, CancellationToken cancellationToken)
         {

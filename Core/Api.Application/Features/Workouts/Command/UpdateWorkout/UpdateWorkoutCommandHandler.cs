@@ -8,17 +8,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Api.Application.Bases;
+using Microsoft.AspNetCore.Http;
 
 namespace Api.Application.Features.Workouts.Command.UpdateWorkout
 {
-    public class UpdateWorkoutCommandHandler : IRequestHandler<UpdateWorkoutCommandRequest,Unit>
+    public class UpdateWorkoutCommandHandler :BaseHandler, IRequestHandler<UpdateWorkoutCommandRequest,Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
-        public UpdateWorkoutCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+     
+        public UpdateWorkoutCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
+
 
         }
         public async Task<Unit> Handle(UpdateWorkoutCommandRequest request, CancellationToken cancellationToken)

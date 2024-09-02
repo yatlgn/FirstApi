@@ -1,7 +1,10 @@
-﻿using Api.Application.Features.Coachs.Command.DeleteCoach;
+﻿using Api.Application.Bases;
+using Api.Application.Features.Coachs.Command.DeleteCoach;
 using Api.Application.Interfaces;
+using Api.Application.Interfaces.AutoMapper;
 using Api.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +13,12 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Seriess.Command.DeleteSeries
 {
-    public class DeleteSeriesCommandHandler : IRequestHandler<DeleteSeriesCommandRequest, Unit>
+    public class DeleteSeriesCommandHandler :BaseHandler, IRequestHandler<DeleteSeriesCommandRequest, Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        public DeleteSeriesCommandHandler(IUnitOfWork unitOfWork)
+      
+        public DeleteSeriesCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
-
+            
         }
         public async Task<Unit> Handle(DeleteSeriesCommandRequest request, CancellationToken cancellationToken)
         {
