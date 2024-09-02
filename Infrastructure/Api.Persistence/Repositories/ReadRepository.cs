@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Api.Persistence.Repositories
 {
-    public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase,new()
+    public class ReadRepository<T>: IReadRepository<T> where T : class, IEntityBase,new()
     {
         private readonly DbContext dbContext;
         public ReadRepository(DbContext dbContext)

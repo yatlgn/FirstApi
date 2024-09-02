@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Persistence", "Infrastr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Api", "Presentation\Api.Api\Api.Api.csproj", "{1BD5D244-6342-4704-8751-CF4C2C79B406}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Mapper", "Core\Api.Mapper\Api.Mapper.csproj", "{8986CC26-432E-4C86-9426-A6F4E9DBF577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Mapper", "Core\Api.Mapper\Api.Mapper.csproj", "{8986CC26-432E-4C86-9426-A6F4E9DBF577}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

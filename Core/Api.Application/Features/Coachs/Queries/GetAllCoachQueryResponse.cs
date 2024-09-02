@@ -1,4 +1,5 @@
-﻿using Api.Domain.Entities;
+﻿using Api.Application.DTOs;
+using Api.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace Api.Application.Features.Coachs.Queries
         public bool Gender { get; set; }
         public Branch Branch { get; set; }
         public int Brevet { get; set; }
+        public CoachDto Coach { get; set; }
     }
 }

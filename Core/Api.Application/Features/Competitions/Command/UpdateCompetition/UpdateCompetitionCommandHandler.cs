@@ -8,17 +8,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Api.Application.Bases;
+using Microsoft.AspNetCore.Http;
 
 namespace Api.Application.Features.Competitions.Command.UpdateCompetition
 {
-    public class UpdateCompetitionCommandHandler : IRequestHandler<UpdateCompetitionCommandRequest,Unit>
+    public class UpdateCompetitionCommandHandler :BaseHandler, IRequestHandler<UpdateCompetitionCommandRequest,Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
-        public UpdateCompetitionCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+      
+        public UpdateCompetitionCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
+           
 
         }
         public async Task<Unit> Handle(UpdateCompetitionCommandRequest request, CancellationToken cancellationToken)

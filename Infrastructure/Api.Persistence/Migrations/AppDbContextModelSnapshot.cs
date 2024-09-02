@@ -60,7 +60,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasKey("CoachId");
 
-                    b.ToTable("Coach");
+                    b.ToTable("Coach", (string)null);
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.CoachGymnast", b =>
@@ -99,7 +99,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasIndex("GymnastId1");
 
-                    b.ToTable("CoachGymnast");
+                    b.ToTable("CoachGymnast", (string)null);
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.Competition", b =>
@@ -137,7 +137,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasKey("CompetitionId");
 
-                    b.ToTable("Competition");
+                    b.ToTable("Competition", (string)null);
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.CompetitionGymnast", b =>
@@ -176,7 +176,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasIndex("GymnastId1");
 
-                    b.ToTable("CompetitionGymnast");
+                    b.ToTable("CompetitionGymnast", (string)null);
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.Difficulty", b =>
@@ -209,7 +209,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasKey("DifficultyId");
 
-                    b.ToTable("Difficulty");
+                    b.ToTable("Difficulty", (string)null);
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.Gymnast", b =>
@@ -256,7 +256,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasKey("GymnastId");
 
-                    b.ToTable("Gymnast");
+                    b.ToTable("Gymnast", (string)null);
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.GymnastParent", b =>
@@ -295,7 +295,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasIndex("ParentId1");
 
-                    b.ToTable("GymnastParent");
+                    b.ToTable("GymnastParent", (string)null);
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.Parent", b =>
@@ -338,7 +338,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasKey("ParentId");
 
-                    b.ToTable("Parent");
+                    b.ToTable("Parent", (string)null);
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.Role", b =>
@@ -351,9 +351,7 @@ namespace Api.Persistence.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                  ;
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
@@ -407,7 +405,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasKey("SeriesId");
 
-                    b.ToTable("Series");
+                    b.ToTable("Series", (string)null);
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.User", b =>
@@ -500,7 +498,7 @@ namespace Api.Persistence.Migrations
 
                     b.HasKey("WorkoutType");
 
-                    b.ToTable("Workout");
+                    b.ToTable("Workout", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

@@ -3,6 +3,7 @@ using Api.Application.Features.Coachs.Command.DeleteCoach;
 using Api.Application.Features.Coachs.Command.UpdateCoach;
 using Api.Application.Features.Coachs.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Api.Controllers
@@ -19,6 +20,7 @@ namespace Api.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task <IActionResult> GetAllCoach()
         {
             var response = await mediator.Send(new GetAllCoachQueryRequest( ));
@@ -26,7 +28,7 @@ namespace Api.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> CreateAllCoach(CreateCoachCommandRequest request)
         {
             await mediator.Send(request);
@@ -34,7 +36,7 @@ namespace Api.Api.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> UpdtaeAllCoach(UpdateCoachCommandRequest request)
         {
             await mediator.Send(request);
@@ -42,7 +44,7 @@ namespace Api.Api.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> DeleteAllCoach(DeleteCoachCommandRequest request)
         {
             await mediator.Send(request);

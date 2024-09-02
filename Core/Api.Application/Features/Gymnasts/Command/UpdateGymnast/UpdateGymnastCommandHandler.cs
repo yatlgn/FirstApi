@@ -8,17 +8,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Api.Application.Bases;
+using Microsoft.AspNetCore.Http;
 
 namespace Api.Application.Features.Gymnasts.Command.UpdateGymnast
 {
-    public class UpdateGymnastCommandHandler : IRequestHandler<UpdateGymnastCommandRequest,Unit>
+    public class UpdateGymnastCommandHandler : BaseHandler, IRequestHandler<UpdateGymnastCommandRequest,Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
-        public UpdateGymnastCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    
+        public UpdateGymnastCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
+
 
         }
         public async Task<Unit> Handle(UpdateGymnastCommandRequest request, CancellationToken cancellationToken)

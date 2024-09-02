@@ -1,7 +1,10 @@
-﻿using Api.Application.Features.Coachs.Command.CreateCoach;
+﻿using Api.Application.Bases;
+using Api.Application.Features.Coachs.Command.CreateCoach;
 using Api.Application.Interfaces;
+using Api.Application.Interfaces.AutoMapper;
 using Api.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +13,12 @@ using System.Threading.Tasks;
 
 namespace Api.Application.Features.Competitions.Command.CreateCompetition
 {
-    public class CreateCompetitionCommandHandler : IRequestHandler<CreateCompetitionCommandRequest,Unit>
+    public class CreateCompetitionCommandHandler :BaseHandler, IRequestHandler<CreateCompetitionCommandRequest,Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        public CreateCompetitionCommandHandler(IUnitOfWork unitOfWork)
+       
+        public CreateCompetitionCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
+            
         }
         public async Task<Unit> Handle(CreateCompetitionCommandRequest request, CancellationToken cancellationToken)
         {

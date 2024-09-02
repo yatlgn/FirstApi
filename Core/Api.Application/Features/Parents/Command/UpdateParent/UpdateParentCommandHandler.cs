@@ -8,17 +8,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Api.Application.Bases;
+using Microsoft.AspNetCore.Http;
 
 namespace Api.Application.Features.Parents.Command.UpdateParent
 {
-    public class UpdateParentCommandHandler : IRequestHandler<UpdateParentCommandRequest,Unit>
+    public class UpdateParentCommandHandler :BaseHandler, IRequestHandler<UpdateParentCommandRequest,Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
-        public UpdateParentCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+       
+        public UpdateParentCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
+
 
         }
         public async Task<Unit> Handle(UpdateParentCommandRequest request, CancellationToken cancellationToken)

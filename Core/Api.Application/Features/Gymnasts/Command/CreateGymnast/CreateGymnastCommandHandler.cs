@@ -1,7 +1,10 @@
-﻿using Api.Application.Features.Coachs.Command.CreateCoach;
+﻿using Api.Application.Bases;
+using Api.Application.Features.Coachs.Command.CreateCoach;
 using Api.Application.Interfaces;
+using Api.Application.Interfaces.AutoMapper;
 using Api.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +14,11 @@ using System.Threading.Tasks;
 namespace Api.Application.Features.Gymnasts.Command.CreateGymnast
 {
    
-        public class GymnastCommandHandler(IUnitOfWork unitOfWork) : IRequestHandler<CreateGymnastCommandRequest,Unit>
+        public class CreateGymnastCommandHandler :BaseHandler, IRequestHandler<CreateGymnastCommandRequest,Unit>
+    {
+        public CreateGymnastCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            private readonly IUnitOfWork unitOfWork = unitOfWork;
+        }
 
         public async Task<Unit> Handle(CreateGymnastCommandRequest request, CancellationToken cancellationToken)
             {

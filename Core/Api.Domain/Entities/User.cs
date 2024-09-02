@@ -9,5 +9,7 @@ namespace Api.Domain.Entities
 {
     public class User : IdentityUser<Guid>
     {
+        public DateTime RefreshTokenExpiryTime { get; set; }
+        public string RefreshToken { get; set; }
     }
 }

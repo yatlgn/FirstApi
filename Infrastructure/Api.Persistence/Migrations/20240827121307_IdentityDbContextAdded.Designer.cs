@@ -354,9 +354,7 @@ namespace Api.Persistence.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
